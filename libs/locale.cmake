@@ -1,5 +1,7 @@
-# Do not warn if ICU_ROOT set.
-cmake_policy( SET CMP0074 NEW )
+# Do not warn if ICU_ROOT set and CMP0074 exists.
+if (POLICY CMP0074)
+   cmake_policy( SET CMP0074 NEW )
+endif()
 
 if(USE_WINDOWS)
   set(BOOST_LOCALE_ENABLE_WINAPI_BACKEND_DEFAULT ON)
