@@ -1,3 +1,6 @@
+# Do not warn if ICU_ROOT set.
+cmake_policy( SET CMP0074 NEW )
+
 if(USE_WINDOWS)
   set(BOOST_LOCALE_ENABLE_WINAPI_BACKEND_DEFAULT ON)
 else()
@@ -54,6 +57,8 @@ _add_boost_lib(
     ${BOOST_SOURCE}/libs/locale/src/util/locale_data.cpp
   LINK
     Boost::system
+  DEFINE_PRIVATE
+    BOOST_THREAD_PROVIDES_NESTED_LOCKS=1
 )
 
 # Convenience interface library to link deps to both main library and tests
